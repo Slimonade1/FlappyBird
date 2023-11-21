@@ -17,7 +17,7 @@ class Player{
 
     update(){
         this.draw()
-        //this.gravity += 0.03
+        this.gravity += 0.03
         this.y += this.gravity
     }
 
