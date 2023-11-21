@@ -5,7 +5,7 @@ class Player{
         this.radius = radius
         this.color = color
         this.gravity = 0
-        this.jumpHeight = 3
+        this.jumpHeight = 8
     }
 
     draw(){
@@ -17,7 +17,7 @@ class Player{
 
     update(){
         this.draw()
-        this.gravity += 0.03
+        this.gravity += 0.20
         this.y += this.gravity
     }
 

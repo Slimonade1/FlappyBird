@@ -8,16 +8,32 @@ const x = canvas.width/4
 const y = canvas.height/2
 
 const player = new Player(x, y, 30, '#e9c498')
-const pipe = new Pipe(x+200, 0, 300, '#bce3aa')
+
+const pipes = []
 
 let animationId
 function animate(){
     animationId = requestAnimationFrame(animate)
-    c.clearRect(0, 0, canvas.width, canvas.height)
+    c.fillStyle = '#b0c1ed'
+    c.fillRect(0, 0, canvas.width, canvas.height)
 
-    pipe.update()
+    pipes.forEach((pipe, index)=>{
+        pipe.update()
+        if(pipe.x <= -150){
+            setTimeout(() => {
+                pipes.splice(index, 1)
+            }, 0)
+        }
+    })
+
     player.update()
-    document.getElementById("test").innerHTML = player.y
+}
+
+pipes.push(new Pipe(x+300, 0, Math.random() * (canvas.height/2 - 70) + 70, '#bce3aa'))
+function spawnPipes(){ 
+    setInterval(() => {
+        pipes.push(new Pipe(x+300, 0, Math.random() * ((canvas.height - 220) - 30) + 30, '#bce3aa'))
+    }, 2300)
 }
 
 addEventListener('touchstart', (event) => 
@@ -33,3 +49,4 @@ addEventListener('click', (event) =>
 )
 
 animate()
+spawnPipes()
