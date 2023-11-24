@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flappy Bird</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body{
             margin: 0;
@@ -11,6 +12,17 @@
     </style>
 </head>
 <body>
+    <div class="fixed text-white ml-2 mt-1 select-none"><span>Score: </span><span id="scoreEl">0</span></div>
+
+    <div class="fixed inset-0 flex items-center justify-center" id="modalEl">
+        <div class="bg-white max-w-md w-full p-6 text-center">
+            <h1 class="text-4xl font-bold leading-none" id="bigScore">0</h1>
+            <p class="text-sm text-gray-500 mb-4">Points</p>
+            <div>
+                <button class="bg-blue-500 text-white w-full py-3 rounded-full text-sm" id="startGameBtn">Start Game</button>
+            </div>
+        </div>
+    </div>
 
     <canvas></canvas>
     <script src="./classes/Player.js"></script>

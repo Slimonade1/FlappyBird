@@ -5,7 +5,7 @@ class Player{
         this.radius = radius
         this.color = color
         this.gravity = 0
-        this.jumpHeight = 8
+        this.jumpHeight = 5.5
     }
 
     draw(){
@@ -15,14 +15,26 @@ class Player{
         c.fill()
     }
 
+    floorCollision(){
+        if(this.y + this.radius >= canvas.height){
+            endGame()
+        }
+    }
+
     update(){
         this.draw()
+        this.floorCollision()
         this.gravity += 0.20
         this.y += this.gravity
     }
 
     jump(){
-        this.gravity = 0
-        this.gravity = -this.jumpHeight
+        if(this.y - this.radius >= 0){
+            this.gravity = 0
+            this.gravity = -this.jumpHeight
+        } else{
+            this.y = 0 + this.radius
+        }
+        
     }
 }
